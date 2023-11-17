@@ -6,12 +6,14 @@
 package com.devpaula.controller;
 
 import com.devpaula.model.Pet;
+import com.devpaula.model.Tutor;
 import com.devpaula.model.dao.ManagerDao;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -54,23 +56,21 @@ public void init(){
         this.petCadastro = new Pet();
     }
 
-public void inserir(String confirma){
-        
-        if(!this.petCadastro.getTutor1().equals(confirma)){
-        
-         FacesContext.getCurrentInstance().addMessage("formCadPet:txttutor", 
-           new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro Severo","TUTOR NÃO PODE CADASTRAR ESSE PET!"));
+ public String inserir(){
          
-        return;
-        
-        }
-        
-        ManagerDao.getCurrentInstance().insert(this.petCadastro);
-        this.petCadastro= new Pet();
-    
-          FacesContext.getCurrentInstance().addMessage(null, new FacesMessage ("Novo amiguinho PET cadastrado com Sucesso!") );
-    
-    }
+         Tutor tutor1 = ((loginController)((HttpSession)FacesContext.getCurrentInstance().getExternalContext()
+                 .getSession(true)).getAttribute("loginController")).getTutorLogado();
+         
+         this.petCadastro.setTutor(tutor1);
+         
+         ManagerDao.getCurrentInstance().insert(this.petCadastro);
+         
+         FacesContext.getCurrentInstance().addMessage(null, 
+                 new FacesMessage("Sucesso", "O seu amiguinho foi cadastrado"));
+         
+         return "menuTutor.xhtml";
+     }
+
 
 
 // parte relacionada ao codigo de compartilhar 
@@ -90,19 +90,19 @@ public void inserir(String confirma){
         return shareCode;
     }
 
-    public void generateShareCode() {
-        if (checkboxValue) {
-            // Verifica se o atributo id contém a palavra "love"
-            String id = "seu_id_do_elemento"; // Substitua com o ID do seu elemento
-            if (id.contains("love")) {
-                shareCode = "Código de compartilhamento gerado!";
-            } else {
-                shareCode = ""; // Se o ID não contiver "love", não gera o código
-            }
-        } else {
-            shareCode = ""; // Se o checkbox não estiver marcado, não gera o código
-        }
+   public void generateShareCode() {
+    if (checkboxValue && Selection != null) {
+        int petId = Selection.getId(); // Obtendo o ID do pet selecionado
+        String codigoCompartilhamento = "love_" + petId; // Gerando o código com base no ID
+
+        // Defina o código gerado para a variável shareCode
+        shareCode = codigoCompartilhamento;
+
+        System.out.println("Código de compartilhamento gerado: " + shareCode);
+    } else {
+        shareCode = ""; // Se não houver pet selecionado ou checkbox desmarcado, define o código como vazio
     }
+   }
 }
 
  

@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      >
     <h:head>
         <title>Cadastro de pet</title>
     </h:head>
@@ -22,42 +23,45 @@
            
                     <p:panelGrid columns="4">
                          <h:outputText value="Nome:"/>
-                         <p:inputText id="txtNome" value="#{petController.petCadastro.nome}"/>
+                         <p:inputText id="txtNome" value="#{PetController.petCadastro.nome}"/>
                          <p:message for="txtNome" />
                          <h:outputText/>
                
                          <h:outputText value="mesAnoNascimento:"/>
-                         <p:inputText id="txtman" value="#{petController.petCadastro.mesAnoNascimento}"/>
+                         <p:inputText id="txtman" value="#{PetController.petCadastro.mesAnoNascimento}"/>
                          <p:message for="txtman" />
                          <h:outputText/>
                          
                          <h:outputText value="Porte:"/>
-                         <p:inputText id="txtPorte" value="#{petController.petCadastro.porte}"/>
+                         <p:inputText id="txtPorte" value="#{PetController.petCadastro.porte}"/>
                          <p:message for="txtPorte" />
                          <h:outputText/>
                          
                          <h:outputText value="Tutor1:"/>
-                         <p:inputText id="txttutor" value="#{petController.petCadastro.tutor1}"/>
+                         <p:inputText id="txttutor" value="#{cTutor}"/>
                          <p:message for="txttutor" />
                          <h:outputText/>
                          
-                         <h:outputText value="Gerar codigoCompartilhamento"/>
-                         <h:selectBooleanCheckbox id="sharecode" value="#{petController.checkboxValue}"/>
-                         <f:ajax listener="#{petController.generateShareCode}" render="shareCode" />
-                         <h:outputText value="#{petController.shareCode}" rendered="#{not empty petController.shareCode}"/>
-                         
-                    </p:panelGrid>
+                        <h:outputText value="Gerar codigoCompartilhamento"/>
+                        <h:selectBooleanCheckbox id="sharecode" value="#{PetController.checkboxValue}">
+                              <f:ajax listener="#{PetController.generateShareCode}" render="shareCode" />
+                        </h:selectBooleanCheckbox>
+                        <p:message for="sharecode"/>
+                        <h:outputText value="#{PetController.shareCode}" id="shareCode" rendered="#{not empty PetController.shareCode}" />                         
+                    
+                </p:panelGrid>
                     
                        <p:commandButton value="Cadastrar" oncomplete="PF('widDialCadPet').show()"/>
                        <p:commandButton value="Cancelar"/>
-                 </p:fieldset>   
+                
+                </p:fieldset>   
                 
                        <p:dialog id="dialCadPet"  
                       modal="true" visible="false" showEffect="fade" hideEffect="fade"
                       widgetVar="widDialCadPet">
                 
                 <h:outputText value="Deseja realmente cadastrar o pet?"/><br/>
-                <p:commandButton value="sim" action="#{petController.inserir(confirma)}"
+                <p:commandButton value="sim" action="#{PetController.inserir()}"
                                  oncomplete="PF('widDialCadPet').hide();" 
                                  update=":gro :formCadPet :msgs" />
                 <p:commandButton value="não" oncomplete="PF('widDialCadPet').hide()"/>
