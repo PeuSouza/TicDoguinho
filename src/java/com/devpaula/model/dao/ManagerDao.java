@@ -30,7 +30,7 @@ public class ManagerDao {
     private EntityManagerFactory emf = null;
             
     private ManagerDao(){
-        this.emf = Persistence.createEntityManagerFactory("TicDoguinhoPU");
+        this.emf = Persistence.createEntityManagerFactory("TicDoguinho2PU");
     } 
     
     public void insert(Object o){

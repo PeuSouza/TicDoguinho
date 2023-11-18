@@ -103,14 +103,14 @@ public class Pet {
     }
   
     // Método para gerar um novo código usando o ID e a palavra "love"
-    public String gerarCodigoCompartilhamento() {
-        String codigo = "love_" + this.id; // Concatena "love_" com o ID do pet
-        return codigo;
-    }
-
-    public void setTutor(Tutor tutor1) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-  
+//    public String codigoCompartilhamento() {
+//        String codigo = "love_" + this.id; // Concatena "love_" com o ID do pet
+//        return codigo;
+//    }
+//
+//    public void setTutor(Tutor tutor1) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
+//  
 }
 

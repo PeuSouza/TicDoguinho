@@ -14,41 +14,31 @@
             <p:growl id="gro" life="4000" sticky="false"/>
             
             <h:form id="formCadPet">
-                <p:fieldset legend="Cadastro de Pet)">
+                <p:fieldset legend="Cadastro de Pet">
          
             <h:head>
                <h1 style="align-content: center"> Pet </h1>
               <img src="data:image/jpeg;base64,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"/>
             </h:head>
            
-                    <p:panelGrid columns="4">
+                    <p:panelGrid columns="3">
                          <h:outputText value="Nome:"/>
-                         <p:inputText id="txtNome" value="#{PetController.petCadastro.nome}"/>
+                         <p:inputText id="txtNome" value="#{petController.petCadastro.nome}"/>
                          <p:message for="txtNome" />
-                         <h:outputText/>
+                      
                
                          <h:outputText value="mesAnoNascimento:"/>
-                         <p:inputText id="txtman" value="#{PetController.petCadastro.mesAnoNascimento}"/>
+                         <p:inputText id="txtman" value="#{petController.petCadastro.mesAnoNascimento}"/>
                          <p:message for="txtman" />
-                         <h:outputText/>
-                         
+                        
                          <h:outputText value="Porte:"/>
-                         <p:inputText id="txtPorte" value="#{PetController.petCadastro.porte}"/>
+                         <p:inputText id="txtPorte" value="#{petController.petCadastro.porte}"/>
                          <p:message for="txtPorte" />
-                         <h:outputText/>
+                       
                          
-                         <h:outputText value="Tutor1:"/>
-                         <p:inputText id="txttutor" value="#{cTutor}"/>
-                         <p:message for="txttutor" />
-                         <h:outputText/>
-                         
-                        <h:outputText value="Gerar codigoCompartilhamento"/>
-                        <h:selectBooleanCheckbox id="sharecode" value="#{PetController.checkboxValue}">
-                              <f:ajax listener="#{PetController.generateShareCode}" render="shareCode" />
-                        </h:selectBooleanCheckbox>
-                        <p:message for="sharecode"/>
-                        <h:outputText value="#{PetController.shareCode}" id="shareCode" rendered="#{not empty PetController.shareCode}" />                         
-                    
+                        <h:outputText value="codigoCompartilhamento"/>
+                        <p:inputText id="txtcodigoCompartilhamento" value="#{petController.petCadastro.codigoPartilhar}" />
+                        <p:message for="txtcodigoCompartilhamento"/>
                 </p:panelGrid>
                     
                        <p:commandButton value="Cadastrar" oncomplete="PF('widDialCadPet').show()"/>
@@ -61,7 +51,7 @@
                       widgetVar="widDialCadPet">
                 
                 <h:outputText value="Deseja realmente cadastrar o pet?"/><br/>
-                <p:commandButton value="sim" action="#{PetController.inserir()}"
+                <p:commandButton value="sim" action="#{petController.inserir()}"
                                  oncomplete="PF('widDialCadPet').hide();" 
                                  update=":gro :formCadPet :msgs" />
                 <p:commandButton value="não" oncomplete="PF('widDialCadPet').hide()"/>
